@@ -1,6 +1,6 @@
 # This is a basic workflow that is manually triggered
 
-name: Manual workflow
+name: My workflow
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
@@ -10,9 +10,9 @@ on:
     inputs:
       name:
         # Friendly description to be shown in the UI instead of 'name'
-        description: 'Person to greet'
+        description: 'descripcion amistosa para los de front end que quieres ver que pasa'
         # Default value if no value is explicitly provided
-        default: 'World'
+        default: 'Larry'
         # Input has to be provided for the workflow to run
         required: true
         # The data type of the input
