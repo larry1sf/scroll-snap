@@ -1,14 +1,14 @@
 @font-face {
   font-family: "font-b";
-  src: url(/public/font/Dosis-Regular.ttf);
+  src: url(../public/font/Dosis-Regular.ttf);
 }
 @font-face {
   font-family: "font-title";
-  src: url(/public/font/Dosis-SemiBold.ttf);
+  src: url(../public/font/Dosis-SemiBold.ttf);
 }
 @font-face {
   font-family: "font";
-  src: url(/public/font/Dosis-Light.ttf);
+  src: url(../public/font/Dosis-Light.ttf);
 }
 :root {
   --color: #f9f8f8dd;
