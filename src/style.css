@@ -1,0 +1,567 @@
+@font-face {
+  font-family: "font-b";
+  src: url(/public/font/Dosis-Regular.ttf);
+}
+@font-face {
+  font-family: "font-title";
+  src: url(/public/font/Dosis-SemiBold.ttf);
+}
+@font-face {
+  font-family: "font";
+  src: url(/public/font/Dosis-Light.ttf);
+}
+:root {
+  --color: #f9f8f8dd;
+  --bg: #2c2c2c;
+  --bg-2: #0dcaf0;
+  --btn-2-active: #0aa2c0;
+  --btn-3: #076578;
+}
+#entrada {
+  height: 60px !important;
+  user-select: none;
+  #playing {
+    position: relative;
+    height: 35px;
+    width: 20%;
+    background-color: var(--bg);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+      cursor: pointer;
+      .icon-loader i {
+        &:nth-child(1),
+        &:nth-child(2),
+        &:nth-child(3),
+        &:nth-child(4),
+        &:nth-child(5) {
+          background-color: var(--bg-2);
+          animation-play-state: paused;
+        }
+      }
+    }
+    .icon-loader {
+      position: relative;
+      display: flex;
+      gap: 2px;
+      width: 50px;
+      height: 30px;
+      justify-content: center;
+      i {
+        background-color: var(--color);
+        box-shadow: 0 0 5px var(--bg-2);
+        height: 30px;
+        width: 2px;
+        position: relative;
+        transform-origin: bottom;
+        &:nth-child(1) {
+          animation: move-logo 1s ease-in infinite alternate both;
+        }
+        &:nth-child(2) {
+          animation: move-logo 1s ease-in 0.33s infinite alternate both;
+        }
+        &:nth-child(3) {
+          animation: move-logo 1s ease-in 0.55s infinite alternate both;
+        }
+        &:nth-child(4) {
+          animation: move-logo 1s ease-in 0.77s infinite alternate both;
+        }
+        &:nth-child(5) {
+          animation: move-logo 1s ease-in 0.99s infinite alternate both;
+        }
+      }
+    }
+  }
+
+  .h1-mio {
+    font-size: 23px;
+    font-family: "font-title";
+  }
+  .h2-mio {
+    font-size: 20px;
+    height: 25px;
+    b {
+      display: inline-block;
+      height: 100%;
+      font-family: "font-b";
+    }
+
+    /* === removing default button style ===*/
+    .button {
+      display: inline-block;
+      margin: 0;
+      height: 25px;
+      background: transparent;
+      padding: 0;
+      border: none;
+    }
+
+    /* button styling */
+    .button {
+      --border-right: 6px;
+      --text-stroke-color: rgba(255, 255, 255, 0.6);
+      --animation-color: #0dcaf0;
+      --fs-size: 20px;
+      letter-spacing: 3px;
+      text-decoration: none;
+      font-size: var(--fs-size);
+      font-family: "font";
+      position: relative;
+      text-transform: capitalize;
+      color: transparent;
+      -webkit-text-stroke: 0px var(--text-stroke-color);
+
+      &:hover {
+        .hover-text {
+          width: 99%;
+          filter: drop-shadow(0 0 20px var(--animation-color));
+        }
+      }
+      /* this is the text, when you hover on button */
+      .hover-text {
+        position: absolute;
+        box-sizing: border-box;
+        content: attr(data-text);
+        color: var(--animation-color);
+        width: 0%;
+        inset: 0;
+        border-right: var(--border-right) solid var(--animation-color);
+        overflow: hidden;
+        transition: 0.5s;
+        -webkit-text-stroke: 0px var(--animation-color);
+      }
+      .actual-text {
+        display: inline-block;
+        height: 25px;
+      }
+    }
+  }
+}
+
+@keyframes move-logo {
+  0% {
+    transform: scaleY(0.1);
+  }
+  33% {
+    transform: scaleY(0.45);
+  }
+  66% {
+    transform: scaleY(0.95);
+  }
+
+  100% {
+    transform: scaleY(0.31);
+  }
+}
+
+/* modo oscuro pr defecto. */
+* {
+  color: var(--color);
+  &::selection {
+    background: var(--bg-2);
+  }
+}
+
+#mini-menu {
+  user-select: none;
+}
+
+.btn-dw,
+.btn-ico,
+.btn-text {
+  transition: all 0.3s;
+}
+/* boton de favoritos */
+.btn-m {
+  padding: 5px;
+  position: relative;
+  height: 100%;
+
+  &:hover {
+    &::before {
+      width: 100%;
+    }
+  }
+  &:active {
+    background: var(--btn-2-active);
+  }
+  &::before {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 0%;
+    right: 0;
+    top: 0;
+    background-color: var(--bg-2);
+    transition: 0.3s;
+    z-index: -1;
+  }
+
+  .ui-like {
+    --icon-size: 24px;
+    --icon-secondary-color: rgb(255, 255, 255);
+    --icon-hover-color: rgba(211, 205, 205, 0.908);
+    --icon-primary-color: rgb(230, 26, 26);
+    --icon-circle-border: 1px solid var(--icon-primary-color);
+    --icon-circle-size: 35px;
+    --icon-anmt-duration: 0.3s;
+    scale: 1.3;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    input {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      display: none;
+
+      &:checked {
+        + .like {
+          fill: var(--icon-primary-color);
+          -webkit-animation: like var(--icon-anmt-duration) forwards;
+          animation: like var(--icon-anmt-duration) forwards;
+          -webkit-transition-delay: 0.3s;
+          transition-delay: 0.3s;
+
+          &::after {
+            -webkit-animation: circles var(--icon-anmt-duration)
+              cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            animation: circles var(--icon-anmt-duration)
+              cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            -webkit-animation-delay: var(--icon-anmt-duration);
+            animation-delay: var(--icon-anmt-duration);
+          }
+
+          &::before {
+            -webkit-animation: circle var(--icon-anmt-duration)
+              cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            animation: circle var(--icon-anmt-duration)
+              cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            -webkit-animation-delay: var(--icon-anmt-duration);
+            animation-delay: var(--icon-anmt-duration);
+          }
+        }
+      }
+    }
+    .like {
+      width: var(--icon-size);
+      height: auto;
+      fill: var(--icon-secondary-color);
+      -webkit-transition: 0.2s;
+      transition: 0.2s;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      position: relative;
+      -webkit-transform-origin: top;
+      -ms-transform-origin: top;
+      transform-origin: top;
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        -webkit-box-shadow: 0 30px 0 -4px var(--icon-primary-color),
+          30px 0 0 -4px var(--icon-primary-color),
+          0 -30px 0 -4px var(--icon-primary-color),
+          -30px 0 0 -4px var(--icon-primary-color),
+          -22px 22px 0 -4px var(--icon-primary-color),
+          -22px -22px 0 -4px var(--icon-primary-color),
+          22px -22px 0 -4px var(--icon-primary-color),
+          22px 22px 0 -4px var(--icon-primary-color);
+        box-shadow: 0 30px 0 -4px var(--icon-primary-color),
+          30px 0 0 -4px var(--icon-primary-color),
+          0 -30px 0 -4px var(--icon-primary-color),
+          -30px 0 0 -4px var(--icon-primary-color),
+          -22px 22px 0 -4px var(--icon-primary-color),
+          -22px -22px 0 -4px var(--icon-primary-color),
+          22px -22px 0 -4px var(--icon-primary-color),
+          22px 22px 0 -4px var(--icon-primary-color);
+        border-radius: 50%;
+        -webkit-transform: scale(0);
+        -ms-transform: scale(0);
+        transform: scale(0);
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        border: var(--icon-circle-border);
+        opacity: 0;
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:active {
+      .like {
+        svg {
+          fill: var(--icon-hover-color);
+          transition: 0.2s;
+        }
+      }
+    }
+  }
+}
+
+@-webkit-keyframes like {
+  50% {
+    -webkit-transform: scaleY(0.6);
+    transform: scaleY(0.6);
+  }
+
+  100% {
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+
+@keyframes like {
+  50% {
+    -webkit-transform: scaleY(0.6);
+    transform: scaleY(0.6);
+  }
+
+  100% {
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+
+@-webkit-keyframes circle {
+  from {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  90% {
+    width: var(--icon-circle-size);
+    height: var(--icon-circle-size);
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes circle {
+  from {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+
+  90% {
+    width: var(--icon-circle-size);
+    height: var(--icon-circle-size);
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes circles {
+  from {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  to {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes circles {
+  from {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  to {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}
+
+/* boton de compartir  */
+.btn-dw {
+  position: relative;
+  width: 150px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  overflow: hidden;
+  border-radius: 0px;
+
+  .btn-text {
+    font-family: "font";
+    transform: translateX(22px);
+    color: #fff;
+    font-weight: 600;
+  }
+  .btn-ico {
+    position: absolute;
+    transform: translateX(109px);
+    height: 100%;
+    width: 50px;
+    background-color: var(--bg-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .svg {
+    position: relative;
+    left: -5px;
+    path {
+      stroke: #ffffff;
+      stroke-width: 1;
+      width: 20px;
+    }
+  }
+  &:hover {
+    .btn-text {
+      color: transparent;
+    }
+    .btn-ico {
+      width: 100%;
+      transform: translateX(0);
+    }
+  }
+  &:active {
+    border: 1px solid var(--btn-2-active);
+    .btn-ico {
+      background-color: var(--btn-2-active);
+    }
+  }
+}
+
+/* boton de cambio de modo(sin cambiar modo aun) */
+.containere {
+  /* --color: var(--color); */
+  --size: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  font-size: var(--size);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  fill: var(--color);
+  height: 100%;
+  width: 40px;
+
+  .moon {
+    position: absolute;
+    -webkit-animation: keyframes-fill 0.5s;
+    animation: keyframes-fill 0.5s;
+  }
+  .sun {
+    position: absolute;
+    display: none;
+    -webkit-animation: keyframes-fill 0.5s;
+    animation: keyframes-fill 0.5s;
+  }
+  input {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+
+    &:checked {
+      ~ .moon {
+        display: none;
+      }
+
+      ~ .sun {
+        display: block;
+      }
+    }
+  }
+}
+
+@-webkit-keyframes keyframes-fill {
+  0% {
+    -webkit-transform: rotate(-360deg) scale(0);
+    transform: rotate(-360deg) scale(0);
+    opacity: 0;
+  }
+
+  75% {
+    -webkit-transform: rotate(25deg);
+    transform: rotate(25deg);
+  }
+}
+@keyframes keyframes-fill {
+  0% {
+    -webkit-transform: rotate(-360deg) scale(0);
+    transform: rotate(-360deg) scale(0);
+    opacity: 0;
+  }
+
+  75% {
+    -webkit-transform: rotate(25deg);
+    transform: rotate(25deg);
+  }
+}
+
+/*  parte del avatar*/
+#avatar {
+  img {
+    border-radius: 50em;
+    border: 1px solid var(--bg-2);
+    box-shadow: 0 0 7px var(--bg), 0 0 10px inset var(--bg-2);
+    z-index: 2;
+  }
+}
+
+#compartir,
+#cambio-modo,
+#avatar {
+  height: 60px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+.h1 {
+  font-family: "font-b";
+  margin-bottom: 0;
+}
