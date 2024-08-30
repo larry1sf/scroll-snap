@@ -216,8 +216,10 @@ body {
     --icon-circle-size: 35px;
     --icon-anmt-duration: 0.3s;
     height: 100%;
+    width: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
     z-index: 1;
 
     input {
