@@ -171,7 +171,6 @@
 }
 
 body {
-  min-width: 570px;
   background: var(--bg);
 }
 
