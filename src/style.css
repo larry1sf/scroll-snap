@@ -30,7 +30,7 @@
   #playing {
     position: relative;
     height: 35px;
-    background-color: transparent;
+    background: transparent;
     border-radius: 5px;
     display: flex;
     justify-content: center;
