@@ -171,6 +171,7 @@
 }
 
 body {
+  min-width: 330px;
   background: var(--bg);
 }
 
@@ -182,7 +183,6 @@ body {
 .btn-m {
   position: relative;
   height: 60px;
-  width: 50px;
   border-radius: 5px;
   &:hover {
     &::before {
@@ -427,7 +427,7 @@ body {
 
 .btn-dw {
   position: relative;
-  width: 150px;
+  /* width: 150px; */
   height: 100%;
   display: flex;
   align-items: center;
@@ -443,7 +443,8 @@ body {
   }
   .btn-ico {
     position: absolute;
-    transform: translateX(109px);
+    right: 100px;
+    transform: translateX(100px);
     height: 100%;
     width: 50px;
     background-color: var(--bg-2);
@@ -452,8 +453,6 @@ body {
     justify-content: center;
   }
   .svg {
-    position: relative;
-    left: -5px;
     path {
       stroke: #ffffff;
       stroke-width: 1;
@@ -466,7 +465,6 @@ body {
     }
     .btn-ico {
       width: 100%;
-      transform: translateX(0);
     }
   }
   &:active {
@@ -481,12 +479,6 @@ body {
   stroke: var(--color);
 }
 /* boton de cambio de modo(sin cambiar modo aun) */
-#cambio-modo {
-  .btn-ico .containere svg {
-    position: relative;
-    left: -4px;
-  }
-}
 
 .containere {
   /* --color: var(--color); */
