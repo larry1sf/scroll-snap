@@ -36,25 +36,30 @@
     <link rel="stylesheet" href="bs/css/bootstrap.min.css" />
     <script type="module" src="./src/index.js"></script>
     <link rel="stylesheet" href="./src/style.css" />
+    <script>
+      const toggleWhiteMode = () => {
+        document.body.classList.toggle("white-theme")
+      }
+    </script>
   </head>
-  <body style="background: #2c2c2c">
+  <body>
     <div class="container">
       <div class="vstack gap-5">
-        <nav class="row p-3 mx-3 g-2 g-xl-0 border rounded">
+        <nav class="row p-3 m-3 g-2 g-xl-0 border rounded bg-secondary">
           <section
             id="entrada"
             tabindex="1"
             class="col-12 col-lg-6 row aling-items-center g-0"
           >
-            <i id="playing" class="col-2">
-              <div class="icon-loader gap-2">
+            <div id="playing" class="col-4">
+              <span class="icon-loader gap-2">
                 <i class="rounded-pill"></i><i class="rounded-pill"></i
                 ><i class="rounded-pill"></i><i class="rounded-pill"></i>
                 <i class="rounded-pill"></i>
-              </div>
-            </i>
+              </span>
+            </div>
             <h1 class="h1-mio col-8 mb-0">Scroll con Scroll-Snap</h1>
-            <h2 class="h2-mio mb-0">
+            <h2 class="h2-mio mb-0 col-12 text-center text-lg-start">
               <b>Hecho por </b>
               <div
                 data-text="Awesome"
@@ -113,7 +118,8 @@
               <span class="btn-ico rounded">
                 <label class="containere">
                   <input
-                    checked="checked"
+                    id="color-mode"
+                    onclick="toggleWhiteMode()"
                     title="cambio de modo"
                     type="checkbox"
                   />
@@ -162,6 +168,7 @@
                     ></g>
                     <g id="SVGRepo_iconCarrier">
                       <path
+                        id="strok"
                         d="M20 13V18C20 19.1046 19.1046 20 18 20H6C4.89543 20 4 19.1046 4 18L4 13M16 8L12 4M12 4L8 8M12 4L12 16"
                         stroke="#000000"
                         stroke-width="1.5"

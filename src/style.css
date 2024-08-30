@@ -19,14 +19,18 @@
   --btn-3: #076578;
 }
 
+.white-theme {
+  --color: #2c2c2c;
+  --bg: #f9f8f8dd;
+}
+
 #entrada {
   height: 60px !important;
   user-select: none;
   #playing {
     position: relative;
     height: 35px;
-    width: 20%;
-    background-color: var(--bg);
+    background-color: transparent;
     border-radius: 5px;
     display: flex;
     justify-content: center;
@@ -78,6 +82,7 @@
   .h1-mio {
     font-size: 23px;
     font-family: "font-title";
+    color: #fff;
   }
   .h2-mio {
     font-size: 20px;
@@ -86,6 +91,7 @@
       display: inline-block;
       height: 100%;
       font-family: "font-b";
+      color: #fff;
     }
 
     /* === removing default button style ===*/
@@ -101,7 +107,7 @@
     /* button styling */
     .button {
       --border-right: 6px;
-      --text-stroke-color: rgba(255, 255, 255, 0.6);
+      --text-stroke-color: #fff1f1;
       --animation-color: #0dcaf0;
       --fs-size: 20px;
       letter-spacing: 3px;
@@ -111,7 +117,7 @@
       position: relative;
       text-transform: capitalize;
       color: transparent;
-      -webkit-text-stroke: 0px var(--text-stroke-color);
+      -webkit-text-stroke: 0px #959595;
 
       &:hover {
         .hover-text {
@@ -166,6 +172,7 @@
 
 body {
   min-width: 570px;
+  background: var(--bg);
 }
 
 #mini-menu {
@@ -199,7 +206,6 @@ body {
     top: 0;
     background-color: var(--bg-2);
     transition: 0.3s;
-    z-index: -1;
   }
 
   .ui-like {
@@ -213,6 +219,7 @@ body {
     height: 100%;
     display: flex;
     align-items: center;
+    z-index: 1;
 
     input {
       -webkit-appearance: none;
@@ -267,9 +274,9 @@ body {
       -webkit-transform-origin: top;
       -ms-transform-origin: top;
       transform-origin: top;
-
       svg {
         scale: 1.3;
+        /* fill: var(--color); */
       }
 
       &::after {
@@ -418,6 +425,7 @@ body {
 .btn-text {
   transition: all 0.3s;
 }
+
 .btn-dw {
   position: relative;
   width: 150px;
@@ -470,6 +478,9 @@ body {
   }
 }
 
+.btn-ico svg #strok {
+  stroke: var(--color);
+}
 /* boton de cambio de modo(sin cambiar modo aun) */
 #cambio-modo {
   .btn-ico .containere svg {
@@ -560,18 +571,16 @@ body {
   position: relative;
   div {
     img {
-      /* border-radius: 50em; */
+      position: relative;
+      z-index: 1;
       box-shadow: 0 0 7px var(--bg);
     }
-    /* border: 1px solid var(--bg-2); */
-    /* z-index: 2; */
   }
   &::before {
     content: "";
     position: absolute;
     height: 100%;
     width: 100%;
-    z-index: -1;
     border-radius: 5px;
     background-color: var(--bg-2);
   }
