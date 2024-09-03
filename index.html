@@ -1,6 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
+    <!-- enlaces -->
+    <script type="module" src="./bs/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./bs/css/bootstrap.min.css" />
+    <!--  -->
+
+    <!--  -->
+    <link rel="stylesheet" href="./src/style.css" />
+    <script type="module" src="./src/index.js"></script>
+    <script>
+      const toggleWhiteMode = () => {
+        document.body.classList.toggle("white-theme")
+      }
+    </script>
+    <!--  -->
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
@@ -30,60 +45,67 @@
       name="og:img:alt"
       content="imagen para la pagina de prueba de mi slider"
     />
-
-    <!-- enlaces -->
-    <script type="module" src="bs/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="bs/css/bootstrap.min.css" />
-    <script type="module" src="./src/index.js"></script>
-    <link rel="stylesheet" href="./src/style.css" />
-    <script>
-      const toggleWhiteMode = () => {
-        document.body.classList.toggle("white-theme")
-      }
-    </script>
   </head>
   <body>
     <div class="container w-100">
       <div class="vstack gap-5">
         <nav class="row p-3 m-3 g-2 g-xl-0 border rounded bg-secondary">
+          <!-- title page y name user -->
           <section
             id="entrada"
             tabindex="1"
             class="col-12 col-lg-6 row aling-items-center g-0"
           >
             <div id="playing" class="col-4">
-              <span class="icon-loader gap-2">
-                <i class="rounded-pill"></i><i class="rounded-pill"></i
-                ><i class="rounded-pill"></i><i class="rounded-pill"></i>
-                <i class="rounded-pill"></i>
+              <span class="icon-loader w-100">
+                <i class="rounded-pill mx-auto"></i
+                ><i class="rounded-pill mx-auto"></i
+                ><i class="rounded-pill mx-auto"></i
+                ><i class="rounded-pill mx-auto"></i>
+                <i class="rounded-pill mx-auto"></i>
+                <i class="rounded-pill mx-auto"></i>
+                <i class="rounded-pill mx-auto"></i>
+                <i class="rounded-pill mx-auto"></i>
               </span>
             </div>
-            <h1 class="h1-mio col-8 mb-0 d-flex align-items-center">
-              Scroll con Scroll-Snap
-            </h1>
+            <!-- title -->
+            <a href="" class="col-7 mb-0 ms-sm-4 ms-1">
+              <h1 class="h1-mio text-center d-flex align-items-center">
+                Scroll con Scroll-Snap
+              </h1>
+            </a>
+            <!-- mi nombre . -->
             <div class="row col-12 h2-mio text-center text-lg-start">
-              <b class="col-4 col-sm-auto d-flex align-items-center pe-0"
-                >Hecho por
-              </b>
-              <h2 class="mb-0 col-8 col-sm-auto d-flex ps-1">
-                <div
-                  data-text="Awesome"
-                  class="button"
-                  type="button"
-                  title="Larry C. Moncada"
-                >
-                  <span class="actual-text">&nbsp;@Larry_Moncada&nbsp;</span>
-                  <span aria-hidden="true" class="hover-text"
-                    >&nbsp;@Larry_Moncada&nbsp;</span
+              <b class="col-auto d-flex align-items-center px-0">Hecho por </b>
+              <a
+                aria-label="red social"
+                title="red social"
+                target="_blank"
+                href="https://www.instagram.com/larrynigu6to/"
+                class="col-6 col-sm-auto ps-1"
+              >
+                <h2 class="mb-0 d-flex">
+                  <div
+                    data-text="Awesome"
+                    class="button"
+                    type="button"
+                    title="Larry C. Moncada"
                   >
-                </div>
-              </h2>
+                    <span class="actual-text">&nbsp;@Larry_Moncada&nbsp;</span>
+                    <span aria-hidden="true" class="hover-text"
+                      >&nbsp;@Larry_Moncada&nbsp;</span
+                    >
+                  </div>
+                </h2></a
+              >
             </div>
           </section>
+          <!-- nav menu -->
           <section
             id="mini-menu"
-            class="hstack gy-5 gy-md-0 gap-1 flex-md-nowrap flex-wrap col-12 col-lg-6 justify-content-lg-between justify-content-evenly"
+            class="hstack gy-5 gy-md-0 gy-md-0 gap-1 flex-md-nowrap flex-wrap col-12 col-lg-6 justify-content-lg-between justify-content-evenly"
           >
+            <!-- boton de favoitos -->
             <div
               id="favoritos"
               class="d-flex justify-content-center btn-m col-12 col-md-2"
@@ -114,6 +136,7 @@
                 </div>
               </label>
             </div>
+            <!-- boton de cambiar de modo -->
             <div
               id="cambio-modo"
               tabindex="3"
@@ -154,8 +177,22 @@
                 </label>
               </span>
             </div>
+            <!-- boton de compartir -->
             <div id="compartir" tabindex="4" class="col-12 col-md-4">
-              <div title="compartir" class="btn-dw rounded">
+              <a
+                id="btn-share"
+                tabindex="0"
+                title="compartir"
+                class="btn-dw rounded"
+                role="button"
+                data-bs-custom-class="custom-popover"
+                data-bs-toggle="popover"
+                data-bs-trigger="focus click"
+                data-bs-container="#compartir"
+                data-bs-placement="left"
+                data-bs-title="Clipboard"
+                data-bs-content="¡Has copiado el enlace!"
+              >
                 <span class="btn-text">Compartir</span>
                 <span class="btn-ico rounded"
                   ><svg
@@ -183,8 +220,9 @@
                       ></path>
                     </g></svg
                 ></span>
-              </div>
+              </a>
             </div>
+            <!-- espacio del avatar -->
             <div
               id="avatar"
               tabindex="5"
@@ -202,14 +240,24 @@
             </div>
           </section>
         </nav>
+        <!-- title scroll -->
         <div class="row justify-content-center">
-          <h2 class="h1 col-9 text-center">
-            <span class="border-bottom border-ligth"
-              >Un slider solo con css por @Larry_Moncada™</span
-            >
+          <h2 class="h1 col-9 text-center mb-0">
+            <span class="border-bottom border-ligth">
+              Un slider solo con css por
+              <a
+                aria-label="red social"
+                title="red social"
+                target="_blank"
+                href="https://www.instagram.com/larrynigu6to/"
+                style="text-decoration: none"
+                ><span class="name">@Larry_Moncada™</span></a
+              >
+            </span>
           </h2>
         </div>
-        <section id="slider" class="mx-auto" allowfullscreen>
+        <!-- scroll -->
+        <section id="slider" class="mx-auto mb-4 mb-lg-0" allowfullscreen>
           <img
             class="img-fluid rounded-top"
             src="https://static.vecteezy.com/system/resources/previews/015/395/708/large_2x/cmyk-colors-scheme-with-hex-codes-cyan-magenta-yellow-and-black-simple-illustration-for-education-vector.jpg"
